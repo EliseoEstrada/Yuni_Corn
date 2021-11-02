@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/opcInfo_group"
+        android:icon="?android:attr/actionModeFindDrawable"
+        android:title="General" />
+    <item
+        android:id="@+id/opcHomeworks_group"
+        android:icon="@drawable/ic_baseline_import_contacts_24"
+        android:title="Homeworks" />
+    <item
+        android:id="@+id/opcChat_group"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="Chat" />
+    <item
+        android:id="@+id/opcMembers_group"
+        android:icon="@drawable/ic_baseline_group_24"
+        android:title="Members" />
+</menu>

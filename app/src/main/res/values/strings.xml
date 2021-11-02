@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Yuni - Corn</string>
+
+    <string-array name="carreras">
+        <item>LMAD</item>
+        <item>LCC</item>
+        <item>LSTI</item>
+        <item>LM</item>
+        <item>LF</item>
+        <item>Actuaria</item>
+    </string-array>
+
+    <string-array name="estado">
+        <item>Cambiar estado</item>
+        <item>Disponible</item>
+        <item>Ausente</item>
+        <item>Ocupado</item>
+        <item>Desconectado</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
