@@ -36,7 +36,7 @@ class FragmentMembers: Fragment(R.layout.fragment_members) {
         val contexto: Context = (activity as Context)
 
         adaptador = MembersAdapter(Globals.listMembersGroup, contexto)
-        rv_members_fc.adapter = adaptador
+        rv_members_fm.adapter = adaptador
 
         loadMembers()
 
@@ -49,7 +49,7 @@ class FragmentMembers: Fragment(R.layout.fragment_members) {
 
          */
 
-        btn_addChat_fc.setOnClickListener {
+        btn_addMember_fm.setOnClickListener {
             val intent = Intent(activity, AddMembersGroupActivity::class.java)
             intent.putExtra("UID_GROUP", UID_GROUP)
             intent.putExtra("CAREER_GROUP", CAREER_GROUP)

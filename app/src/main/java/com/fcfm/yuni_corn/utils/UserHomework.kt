@@ -2,6 +2,7 @@ package com.fcfm.yuni_corn.utils
 
 class UserHomework(
     uid: String,
+    title: String,
     uidGroup:String,
     finishDate: String,
     sendDate: String,
@@ -10,6 +11,11 @@ class UserHomework(
     sent: Boolean
 ) {
     var uid: String = uid
+        get() = field
+        set(value){
+            field = value
+        }
+    var title: String = title
         get() = field
         set(value){
             field = value

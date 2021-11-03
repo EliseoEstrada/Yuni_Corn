@@ -46,7 +46,7 @@ class FragmentChats: Fragment(R.layout.fragment_chats)  {
 
         //Cargar adaptador
         adaptador = ChatsAdapter(listaChats, contexto)
-        rv_members_fc.adapter = adaptador
+        rv_chats_fc.adapter = adaptador
 
         cargarChats(UID)
 

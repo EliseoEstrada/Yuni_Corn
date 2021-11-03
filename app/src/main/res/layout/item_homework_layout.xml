@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_homeworkContainer_ih"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_state_ih"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:gravity="end"
+            android:text="TextView"
+            tools:text="Pendiente" />
+
+        <TextView
+            android:id="@+id/tv_title_ih"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Proyecto de base de datos" />
+
+        <TextView
+            android:id="@+id/tv_finishDate_ih"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="End date"
+            tools:text="Vence el 10/10/2022" />
+    </LinearLayout>
+</FrameLayout>

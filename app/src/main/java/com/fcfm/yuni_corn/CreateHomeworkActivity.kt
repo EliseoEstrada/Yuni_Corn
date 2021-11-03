@@ -113,7 +113,7 @@ class CreateHomeworkActivity : AppCompatActivity() {
             Toast.makeText(this, "Homework create with exit", Toast.LENGTH_SHORT).show()
 
             for(item in Globals.listMembersGroup){
-                val userHomework = UserHomework(uidHomework, uidGroup, finishDate, "", "", 0, false)
+                val userHomework = UserHomework(uidHomework, title,uidGroup, finishDate, "", "", 0, false)
                 user_homeworksRef.child(item).child(uidHomework).setValue(userHomework)
             }
 
