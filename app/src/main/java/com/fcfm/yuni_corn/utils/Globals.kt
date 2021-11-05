@@ -1,6 +1,7 @@
 package com.fcfm.yuni_corn.utils
 
 import android.app.Application
+import com.fcfm.yuni_corn.models.Rewards
 import com.fcfm.yuni_corn.models.Users
 
 
@@ -16,7 +17,8 @@ class Globals : Application() {
         //Lista de uids de miembros en un grupo
         var listMembersGroup = mutableListOf<String>()
 
-
+        //Lista de logros de usuario
+        var listRewardsUser = mutableListOf<Rewards>()
     }
 
 

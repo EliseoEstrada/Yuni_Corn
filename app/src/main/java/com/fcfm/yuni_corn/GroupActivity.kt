@@ -52,7 +52,7 @@ class GroupActivity : AppCompatActivity() {
                     activity.putExtra("TITLE_CHAT", TITLE_GROUP)
                     activity.putExtra("UID_CHAT", UID_GROUP)
                     activity.putExtra("IMAGE_CHAT", IMAGE_GROUP)
-
+                    activity.putExtra("TYPE_CHAT",2)    //Decirle al chat que es tipo muro
                     startActivity(activity)
                     true
                 }
@@ -78,6 +78,8 @@ class GroupActivity : AppCompatActivity() {
         if(etiqueta == "fragmentoTareas"){
             args.putString("open_from","GROUP")
         }
+
+
 
         fragmentoNuevo.setArguments(args);
         //Comenzar transaccion

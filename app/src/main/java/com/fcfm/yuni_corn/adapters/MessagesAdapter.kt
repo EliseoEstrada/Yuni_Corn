@@ -32,17 +32,17 @@ class MessagesAdapter(private val listaMensajes: MutableList<Messages>, val uidU
                 itemView.tvContentM.text = content
             }
             if(mensaje.type == "image"){
-                /*
+
                 itemView.ivImageContentM.visibility = View.VISIBLE
-                itemView.tvContentM.visibility = View.GONE
+                //itemView.tvContentM.visibility = View.GONE
 
                 Picasso.get().load(content)
                     .placeholder(R.drawable.ic_baseline_image_24)
                     .error(R.drawable.ic_baseline_image_24)
                     .into(itemView.ivImageContentM)
 
-                 */
-                itemView.tvContentM.text = "IMAGE"
+
+                //itemView.tvContentM.text = "IMAGE"
             }
 
 

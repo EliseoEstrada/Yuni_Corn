@@ -1,5 +1,6 @@
 package com.fcfm.yuni_corn
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,7 @@ class ChatActivity : AppCompatActivity() {
     var UID_CHAT = ""
     var TITLE_CHAT = ""
     var IMAGE_CHAT = ""
+    var TYPE_CHAT = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,9 @@ class ChatActivity : AppCompatActivity() {
         TITLE_CHAT = intent.getStringExtra("TITLE_CHAT") ?: "Usuario"
         UID_CHAT = intent.getStringExtra("UID_CHAT") ?: ""
         IMAGE_CHAT = intent.getStringExtra("IMAGE_CHAT") ?: ""
+
+        TYPE_CHAT = intent.getIntExtra("TYPE_CHAT",0)
+
 
         if(IMAGE_CHAT != "") {
             Picasso.get().load(IMAGE_CHAT)
@@ -76,6 +81,13 @@ class ChatActivity : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
 
+        iv_members_c.setOnClickListener {
+            val activity = Intent(this, MembersChatActivity::class.java)
+            activity.putExtra("UID_CHAT", UID_CHAT)
+            activity.putExtra("TYPE_CHAT", TYPE_CHAT)
+            startActivity(activity)
+        }
+
         getMessages()
     }
 
@@ -94,7 +106,6 @@ class ChatActivity : AppCompatActivity() {
             chatsRef.child(UID_CHAT).child("lastMessage").setValue(lastMessage)
             chatsRef.child(UID_CHAT).child("date").setValue(date)
 
-            rv_messages_c.smoothScrollToPosition(listaMensajes.size - 1)
         }
 
         //Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()

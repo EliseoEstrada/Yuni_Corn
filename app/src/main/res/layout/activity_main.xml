@@ -21,7 +21,7 @@
         app:menu="@menu/main" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/cl_logo_m"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/principal"
@@ -75,7 +75,7 @@
         android:layout_marginEnd="8dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/cl_logo_m"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bvn_menu_m">

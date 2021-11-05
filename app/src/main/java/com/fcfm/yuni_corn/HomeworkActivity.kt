@@ -1,19 +1,24 @@
 package com.fcfm.yuni_corn
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.fcfm.yuni_corn.models.Rewards
 import com.fcfm.yuni_corn.utils.Globals
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_homework.*
+import kotlinx.android.synthetic.main.custom_toast_01.*
+import kotlinx.android.synthetic.main.custom_toast_01.view.*
 import kotlinx.android.synthetic.main.dialog_upload_homework.view.*
 import java.io.File
 import java.text.SimpleDateFormat
@@ -26,6 +31,7 @@ class HomeworkActivity : AppCompatActivity() {
     private val user_HomeworkRef = db.getReference("USER_HOMEWORKS")
     private val mStorageRef: StorageReference = FirebaseStorage.getInstance().getReference()
     private val homeworkStorageRef = mStorageRef.child("Homeworks")
+    private val rewardsRef = db.getReference("USER_REWARDS")
 
     private var UID_HOMEWORK = ""
     private var SENT = false
@@ -37,6 +43,8 @@ class HomeworkActivity : AppCompatActivity() {
     lateinit private var document: Uri
     private var nameDocument: String = ""
     private var uploadDocument = false
+
+    private var logro = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,11 +63,17 @@ class HomeworkActivity : AppCompatActivity() {
             nameDocument = UIDS.get("nameDocument") as String
         }
 
-
         tv_points_h.text = POINTS.toString()
         tv_document_h.text = nameDocument
 
         loadHomework()
+
+        for(item in Globals.listRewardsUser){
+            if(item.uid == "logro_04"){
+                logro = true
+                break
+            }
+        }
 
         btn_selectDocument_h.setOnClickListener {
             //inflate el dialogo con el diseño
@@ -185,6 +199,10 @@ class HomeworkActivity : AppCompatActivity() {
                 //Actualizar datos
                 user_HomeworkRef.child(uidUser).child(UID_HOMEWORK).updateChildren(childUpdates).addOnSuccessListener {
                     showProgress(false)
+                    if(!logro){
+                        showToastReward()
+                    }
+
                     Toast.makeText(this, "homework sent", Toast.LENGTH_SHORT).show()
                     finish()
                 }.addOnFailureListener {
@@ -214,4 +232,30 @@ class HomeworkActivity : AppCompatActivity() {
         }
     }
 
+    fun showToastReward(){
+
+        val reward = Rewards(
+            "logro_04",
+            "Lo hice con mis lagrimas",
+            "Se obtiene al enviar una tarea por primera vez"
+        )
+        rewardsRef.child(Globals.UserLogged.uid).child(reward.uid).setValue(reward).addOnSuccessListener {
+            //Agregar a la lista
+            Globals.listRewardsUser.add(reward)
+
+            val mp: MediaPlayer
+            mp = MediaPlayer.create(this, R.raw.notification)
+            mp.start()
+
+            val inflater = LayoutInflater.from(this)
+            val layout: View = inflater.inflate(R.layout.custom_toast_01, ll_toastLayout_ct)
+            layout.tv_title_ct.setText(reward.title)
+            val toast = Toast(applicationContext)
+            toast.setGravity(Gravity.CENTER_VERTICAL / Gravity.CENTER_HORIZONTAL, 0, 500)
+            toast.duration = Toast.LENGTH_LONG
+            toast.view = layout
+            toast.show()
+        }
+
+    }
 }

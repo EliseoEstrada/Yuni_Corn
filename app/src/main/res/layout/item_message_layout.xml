@@ -53,7 +53,6 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="8dp"
                 android:paddingRight="16dp"
-                android:text="TextView"
                 android:textColor="@color/white"
                 tools:text="Hola amigo como estas,  yo muy bien por todo lo que paso"
                 tools:visibility="visible" />

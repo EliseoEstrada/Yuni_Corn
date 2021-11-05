@@ -3,9 +3,12 @@ package com.fcfm.yuni_corn
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -13,6 +16,7 @@ import android.widget.Toast
 
 import com.fcfm.yuni_corn.adapters.UsersGroupAdapter
 import com.fcfm.yuni_corn.models.Chats
+import com.fcfm.yuni_corn.models.Rewards
 import com.fcfm.yuni_corn.models.Users
 import com.fcfm.yuni_corn.utils.Globals
 import com.fcfm.yuni_corn.utils.Members
@@ -20,6 +24,8 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_new_group_chat.*
+import kotlinx.android.synthetic.main.custom_toast_01.*
+import kotlinx.android.synthetic.main.custom_toast_01.view.*
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -32,12 +38,14 @@ class NewGroupChatActivity : AppCompatActivity() {
     private var db = FirebaseDatabase.getInstance()     //Variable que apunta al nombre de la base de datos
     private val usuariosRef = db.getReference("USERS")   //Variable para crear Tabla en bd
     private val chatsRef = db.getReference("CHATS")   //Variable para crear Tabla en bd
+    private val rewardsRef = db.getReference("USER_REWARDS")
     private val mStorageRef: StorageReference = FirebaseStorage.getInstance().getReference()
     private var UID: String = ""
     private var USER: String = ""
     private var IMAGE: String = ""
     private var imageSelected = false
 
+    private var logro = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +54,13 @@ class NewGroupChatActivity : AppCompatActivity() {
         UID = Globals.UserLogged.uid
         USER = Globals.UserLogged.user
         IMAGE = Globals.UserLogged.image
+
+        for(item in Globals.listRewardsUser){
+            if(item.uid == "logro_03"){
+                logro = true
+                break
+            }
+        }
 
         //Agregarte al grupo
         val me = Members(UID,USER,IMAGE)
@@ -165,6 +180,10 @@ class NewGroupChatActivity : AppCompatActivity() {
                 chatsRef.child(uid).child("members").child(item.uid).setValue(item)
             }
 
+            if(!logro){
+                showToastReward()
+            }
+
             showProgress(false)
             val activity = Intent(this, ChatActivity::class.java)
             activity.putExtra("TITLE_CHAT", obj.title)
@@ -190,5 +209,31 @@ class NewGroupChatActivity : AppCompatActivity() {
         }
     }
 
+    fun showToastReward(){
+
+        val reward = Rewards(
+            "logro_03",
+            "O metes a pablito o tomamos jerusalen",
+            "Se obtiene al crear chat grupal por primera vez"
+        )
+        rewardsRef.child(Globals.UserLogged.uid).child(reward.uid).setValue(reward).addOnSuccessListener {
+            //Agregar a la lista
+            Globals.listRewardsUser.add(reward)
+
+            val mp: MediaPlayer
+            mp = MediaPlayer.create(this, R.raw.notification)
+            mp.start()
+
+            val inflater = LayoutInflater.from(this)
+            val layout: View = inflater.inflate(R.layout.custom_toast_01, ll_toastLayout_ct)
+            layout.tv_title_ct.setText(reward.title)
+            val toast = Toast(applicationContext)
+            toast.setGravity(Gravity.CENTER_VERTICAL / Gravity.CENTER_HORIZONTAL, 0, 500)
+            toast.duration = Toast.LENGTH_LONG
+            toast.view = layout
+            toast.show()
+        }
+
+    }
 
 }

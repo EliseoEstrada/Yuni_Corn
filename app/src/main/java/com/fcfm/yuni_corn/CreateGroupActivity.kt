@@ -3,22 +3,29 @@ package com.fcfm.yuni_corn
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import com.fcfm.yuni_corn.models.Chats
 import com.fcfm.yuni_corn.models.Groups
+import com.fcfm.yuni_corn.models.Rewards
 import com.fcfm.yuni_corn.utils.Globals
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_create_group.*
+import kotlinx.android.synthetic.main.custom_toast_01.*
+import kotlinx.android.synthetic.main.custom_toast_01.view.*
 import java.io.ByteArrayOutputStream
 import java.util.*
+import kotlin.math.log
 
 class CreateGroupActivity : AppCompatActivity() {
 
@@ -27,11 +34,14 @@ class CreateGroupActivity : AppCompatActivity() {
     private val group_membersRef = db.getReference("GROUP_MEMBERS")
     private val user_groupsRef = db.getReference("USER_GROUPS")
     private val chatRef = db.getReference("CHATS")
+    private val rewardsRef = db.getReference("USER_REWARDS")
     private val mStorageRef: StorageReference = FirebaseStorage.getInstance().getReference("Groups")
 
     private lateinit var UID: String
     private lateinit var CAREER: String
     private var selectedImage = false
+
+    private var logro = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +50,14 @@ class CreateGroupActivity : AppCompatActivity() {
         UID = Globals.UserLogged.uid
         CAREER = Globals.UserLogged.career
         tv_career_cg.text = CAREER
+
+
+        for(item in Globals.listRewardsUser){
+            if(item.uid == "logro_02"){
+                logro = true
+                break
+            }
+        }
 
         iv_imageGroup_cg.setOnClickListener {
             val intent = Intent()
@@ -122,6 +140,12 @@ class CreateGroupActivity : AppCompatActivity() {
                     //colocar uid e grupo en la lista del usuario
                     user_groupsRef.child(UID).child(obj.uid).setValue(obj.uid).addOnSuccessListener {
                         showProgress(false)
+
+                        //Crear logro
+                        if(!logro){
+                            showToastReward()
+                        }
+
                         val activity = Intent(this, GroupActivity::class.java)
                         activity.putExtra("TITLE_GROUP", obj.title)
                         activity.putExtra("UID_GROUP", obj.uid)
@@ -180,5 +204,32 @@ class CreateGroupActivity : AppCompatActivity() {
             progressBar5.visibility = View.GONE
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         }
+    }
+
+    fun showToastReward(){
+
+        val reward = Rewards(
+            "logro_02",
+            "De alumno a maestro",
+            "Se obtiene al crear un grupo por primera vez"
+        )
+        rewardsRef.child(Globals.UserLogged.uid).child(reward.uid).setValue(reward).addOnSuccessListener {
+            //Agregar a la lista
+            Globals.listRewardsUser.add(reward)
+
+            val mp: MediaPlayer
+            mp = MediaPlayer.create(this, R.raw.notification)
+            mp.start()
+
+            val inflater = LayoutInflater.from(this)
+            val layout: View = inflater.inflate(R.layout.custom_toast_01, ll_toastLayout_ct)
+            layout.tv_title_ct.setText("De alumno a maestro")
+            val toast = Toast(applicationContext)
+            toast.setGravity(Gravity.CENTER_VERTICAL / Gravity.CENTER_HORIZONTAL, 0, 500)
+            toast.duration = Toast.LENGTH_LONG
+            toast.view = layout
+            toast.show()
+        }
+
     }
 }

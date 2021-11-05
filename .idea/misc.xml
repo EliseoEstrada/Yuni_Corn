@@ -21,6 +21,7 @@
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_logo.xml" value="0.15625" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_management.xml" value="0.33" />
+        <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_members_chat.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_new_chat.xml" value="0.16983695652173914" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_new_group_chat.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_register.xml" value="0.22" />
@@ -36,10 +37,12 @@
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/fragment_homeworks.xml" value="0.22" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/fragment_members.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/fragment_rewards.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/item_chat_layout.xml" value="0.33" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/item_group_layout.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/item_homework_layout.xml" value="0.33" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/item_message_layout.xml" value="0.33" />
+        <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/item_reward_layout.xml" value="0.33" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/item_user_group_layout.xml" value="0.33" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/item_user_layout.xml" value="0.33" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/menu/group.xml" value="0.33" />
