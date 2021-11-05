@@ -55,7 +55,7 @@ class MessagesAdapter(private val listaMensajes: MutableList<Messages>, val uidU
                     Gravity.END,
                 )
                 itemView.msgContainerM.layoutParams = newParams
-                //itemView.lyMessageBG.setBackgroundResource(R.drawable.rounded2)
+                itemView.lyMessageBG.setBackgroundResource(R.drawable.rounded2)
                 itemView.tvUserM.isVisible = false
             }
 

@@ -3,17 +3,17 @@ package com.fcfm.yuni_corn.adapters
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.fcfm.yuni_corn.GroupActivity
 import com.fcfm.yuni_corn.HomeworkActivity
 import com.fcfm.yuni_corn.R
-import com.fcfm.yuni_corn.utils.UserHomework
+import com.fcfm.yuni_corn.models.UserHomework
 import kotlinx.android.synthetic.main.item_homework_layout.view.*
 
-class HomeworksAdapter(private val listHomeworks: MutableList<UserHomework>,val contexto: Context) :
+class HomeworksAdapter(private val listHomeworks: MutableList<UserHomework>, val contexto: Context) :
     RecyclerView.Adapter<HomeworksAdapter.HomeworksViewHolder>(){
 
     class HomeworksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -23,7 +23,8 @@ class HomeworksAdapter(private val listHomeworks: MutableList<UserHomework>,val 
 
             var state = "Pendiente"
             if(homework.sent){
-                "Entregada"
+                state = "Entregada"
+                itemView.ll_homeworkContainer_ih.setBackgroundResource(R.drawable.rounded2)
             }
 
             itemView.tv_state_ih.text = state
@@ -31,9 +32,18 @@ class HomeworksAdapter(private val listHomeworks: MutableList<UserHomework>,val 
             itemView.ll_homeworkContainer_ih.setOnClickListener {
                 val activity = Intent(contexto, HomeworkActivity::class.java)
 
-                activity.putExtra("UID_HOMEWORK", homework.uid)
-                activity.putExtra("SEND", homework.sent)
-                activity.putExtra("POINTS", homework.points)
+                //Paquete
+                val args = Bundle()
+                args.putString("uidHomework",homework.uid);
+                args.putString("finishDate",homework.finishDate);
+                args.putBoolean("sent",homework.sent);
+                args.putString("title",homework.title);
+                args.putString("uidGroup",homework.uidGroup);
+                args.putInt("points",homework.points);
+                args.putString("nameDocument",homework.nameDocument);
+
+                activity.putExtra("HOMEWORK",args)
+
                 (contexto as Activity).startActivity(activity)
             }
         }

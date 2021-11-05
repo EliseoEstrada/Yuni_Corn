@@ -3,6 +3,7 @@ package com.fcfm.yuni_corn.utils
 import android.app.Application
 import com.fcfm.yuni_corn.models.Users
 
+
 class Globals : Application() {
     companion object {
         @JvmField
@@ -14,6 +15,10 @@ class Globals : Application() {
 
         //Lista de uids de miembros en un grupo
         var listMembersGroup = mutableListOf<String>()
+
+
     }
+
+
 
 }

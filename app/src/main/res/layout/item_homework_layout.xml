@@ -17,9 +17,9 @@
             android:id="@+id/tv_state_ih"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
             android:gravity="end"
             android:text="TextView"
+            android:textSize="12sp"
             tools:text="Pendiente" />
 
         <TextView

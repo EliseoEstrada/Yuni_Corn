@@ -2,15 +2,13 @@ package com.fcfm.yuni_corn.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.fcfm.yuni_corn.R
 import com.fcfm.yuni_corn.adapters.HomeworksAdapter
 import com.fcfm.yuni_corn.utils.Globals
-import com.fcfm.yuni_corn.utils.UserHomework
+import com.fcfm.yuni_corn.models.UserHomework
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.fragment_groups.*
 import kotlinx.android.synthetic.main.fragment_homeworks.*
 
 class FragmentHomeworks: Fragment(R.layout.fragment_homeworks)  {
@@ -52,8 +50,9 @@ class FragmentHomeworks: Fragment(R.layout.fragment_homeworks)  {
                         snap.child("finishDate").value.toString(),
                         snap.child("sendDate").value.toString(),
                         snap.child("document").value.toString(),
+                        snap.child("nameDocument").value.toString(),
                         snap.child("points").value.toString().toInt(),
-                        snap.child("send").value.toString().toBoolean()
+                        snap.child("sent").value.toString().toBoolean()
                     )
 
                 listHomeworks.add(obj)
@@ -80,8 +79,9 @@ class FragmentHomeworks: Fragment(R.layout.fragment_homeworks)  {
                         snap.child("finishDate").value.toString(),
                         snap.child("sendDate").value.toString(),
                         snap.child("document").value.toString(),
+                        snap.child("nameDocument").value.toString(),
                         snap.child("points").value.toString().toInt(),
-                        snap.child("send").value.toString().toBoolean()
+                        snap.child("sent").value.toString().toBoolean()
                     )
 
                     listHomeworks.add(obj)

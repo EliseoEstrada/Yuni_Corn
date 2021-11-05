@@ -1,4 +1,4 @@
-package com.fcfm.yuni_corn.utils
+package com.fcfm.yuni_corn.models
 
 class UserHomework(
     uid: String,
@@ -7,6 +7,7 @@ class UserHomework(
     finishDate: String,
     sendDate: String,
     document:String,
+    nameDocument:String,
     points: Int,
     sent: Boolean
 ) {
@@ -36,6 +37,11 @@ class UserHomework(
             field = value
         }
     var document: String = document
+        get() = field
+        set(value){
+            field = value
+        }
+    var nameDocument: String = nameDocument
         get() = field
         set(value){
             field = value

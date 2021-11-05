@@ -9,13 +9,14 @@
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.19315068493150686" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/drawable/rounded.xml" value="0.2169230769230769" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/drawable/rounded2.xml" value="0.2169230769230769" />
+        <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/drawable/shape_toast_01.xml" value="0.19315068493150686" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/drawable/splashscreen.xml" value="0.2169230769230769" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_add_members_group.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_chat.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_create_group.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_create_homework.xml" value="0.33" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_group.xml" value="0.2" />
-        <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_homework.xml" value="0.2" />
+        <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_homework.xml" value="0.33" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_logo.xml" value="0.15625" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -25,6 +26,8 @@
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_users.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/activity_users_group.xml" value="0.33" />
+        <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/custom_toast_01.xml" value="0.33" />
+        <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/dialog_upload_homework.xml" value="0.33" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/dialog_upload_image.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/fragment_chats.xml" value="0.25" />
         <entry key="..\:/Proyectos/AndroidStudioProyects/YuniCorn/app/src/main/res/layout/fragment_group_data.xml" value="0.22" />

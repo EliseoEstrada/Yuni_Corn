@@ -10,7 +10,7 @@
 
     <color name="principal">#F84568</color>
     <color name="secundario">#FF88A0</color>
-    <color name="silver">#95FFFFFF</color>
+    <color name="silver">#AAAAAA</color>
 
     <color name="Disponible">#4CAF50</color>
     <color name="Ocupado">#95FF0000</color>

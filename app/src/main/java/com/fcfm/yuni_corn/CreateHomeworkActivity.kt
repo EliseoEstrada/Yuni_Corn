@@ -8,9 +8,8 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.fcfm.yuni_corn.models.Homeworks
 import com.fcfm.yuni_corn.utils.Globals
-import com.fcfm.yuni_corn.utils.UserHomework
+import com.fcfm.yuni_corn.models.UserHomework
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ServerValue
 import kotlinx.android.synthetic.main.activity_create_homework.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -113,7 +112,7 @@ class CreateHomeworkActivity : AppCompatActivity() {
             Toast.makeText(this, "Homework create with exit", Toast.LENGTH_SHORT).show()
 
             for(item in Globals.listMembersGroup){
-                val userHomework = UserHomework(uidHomework, title,uidGroup, finishDate, "", "", 0, false)
+                val userHomework = UserHomework(uidHomework, title,uidGroup, finishDate, "", "", "",0, false)
                 user_homeworksRef.child(item).child(uidHomework).setValue(userHomework)
             }
 

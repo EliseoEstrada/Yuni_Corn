@@ -67,7 +67,7 @@
                 android:paddingRight="16dp"
                 android:paddingBottom="8dp"
                 android:text="TextView"
-                android:textColor="@color/silver"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:textStyle="bold|italic"
                 tools:text="9:30" />

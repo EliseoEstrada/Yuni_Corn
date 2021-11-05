@@ -1,19 +1,21 @@
 package com.fcfm.yuni_corn
 
+import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.*
+import android.widget.*
 import com.fcfm.yuni_corn.utils.Globals
 import com.fcfm.yuni_corn.models.Users
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 
-import android.view.WindowManager
+import kotlinx.android.synthetic.main.custom_toast_01.*
+import android.widget.TextView
+import kotlinx.android.synthetic.main.custom_toast_01.view.*
 
 
 class LoginActivity : AppCompatActivity() {
@@ -72,6 +74,8 @@ class LoginActivity : AppCompatActivity() {
                             )
                             Globals.UserLogged = obj
 
+                            showToastReward("Primer logueada")
+
                             val activity = Intent(this, MainActivity::class.java)
                             //activity.putExtra("UID", uid)
                             startActivity(activity)
@@ -115,4 +119,22 @@ class LoginActivity : AppCompatActivity() {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         }
     }
+
+
+    fun showToastReward(texto: String){
+        val mp: MediaPlayer
+        mp = MediaPlayer.create(this, R.raw.notification)
+        mp.start()
+
+        val inflater = LayoutInflater.from(this)
+        val layout: View = inflater.inflate(R.layout.custom_toast_01, ll_toastLayout_ct)
+        layout.tv_title_ct.setText(texto)
+        val toast = Toast(applicationContext)
+        toast.setGravity(Gravity.CENTER_VERTICAL / Gravity.CENTER_HORIZONTAL, 0, 500)
+        toast.duration = Toast.LENGTH_LONG
+        toast.view = layout
+        toast.show()
+    }
+
+
 }
